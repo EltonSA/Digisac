@@ -16,21 +16,21 @@ headers = {
 
 # IDs dos remetentes
 senders = {
-    "Victor Cals": "feabbeab-6c4c-479a-81cc-5d080ae2d5ee",
-    "Felipe": "e3b607c9-0b32-491b-8c9a-67683b55b7ca",
-    "Nathan": "cdf4a7e9-566a-4b32-8118-436287caafa3"
+    "*Victor Cals:*": "feabbeab-6c4c-479a-81cc-5d080ae2d5ee",
+    "*Felipe:*": "e3b607c9-0b32-491b-8c9a-67683b55b7ca",
+    "*Nathan:*": "cdf4a7e9-566a-4b32-8118-436287caafa3"
 }
 
 # Função para enviar mensagem
 def enviar_mensagem(text, service_id, number, user_id):
     data = {
         "text": text,
-        "type": "chat",
-        "serviceId": service_id,
         "number": number,
-        "userId": user_id,
-        "origin": "user",
-        "dontOpenticket": "true"
+        #"type": "chat",
+        "serviceId": service_id,
+        #"userId": user_id,
+        "origin": "bot",
+        "dontOpenticket": True
     }
     response = requests.post(url, headers=headers, json=data)
     return response.status_code == 200
@@ -70,4 +70,4 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=True, host='0.0.0.0', port=5001)
